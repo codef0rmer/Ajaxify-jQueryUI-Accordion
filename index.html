@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>jQuery UI Accordion - Default functionality</title> 
+	<link rel="stylesheet" href="http://jqueryui.com/themes/base/jquery.ui.all.css"> 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+	<script src="http://jqueryui.com/ui/jquery.ui.core.js"></script> 
+	<script src="http://jqueryui.com/ui/jquery.ui.widget.js"></script> 
+	<script src="http://jqueryui.com/ui/jquery.ui.accordion.js"></script> 
+	<script> 
+	$(function() {
+	  $( "#accordion" ).accordion({
+	    collapsible: true, 
+            active : false, 
+	    change: function (e, ui) {
+	      $url = $(ui.newHeader[0]).children('a').attr('href');
+	      $.get($url, function (data) {
+                 console.log(data);
+	         $(ui.newHeader[0]).next().html(data);
+              });
+            }
+	  });
+	});
+	</script> 
+</head> 
+<body> 
+ 
+<div id="accordion"> 
+	<h3><a href="ajax1.html">Section 1</a></h3> 
+	<div> 
+		<p> 
+		  Loading... Please wait.
+		</p> 
+	</div> 
+	<h3><a href="ajax2.html">Section 2</a></h3> 
+	<div> 
+		<p> 
+		  Loading... Please wait.
+		</p> 
+	</div> 
+</div> 
+</body> 
+</html> 
